@@ -16,8 +16,20 @@
 
     </test>
 
-<!--   &lt;!&ndash; <test name="Subcategory DB Tests">-->
+    <test name="DB Tests">
+        <classes>
 
-<!--    </test>&ndash;&gt;-->
+            <class name="demo.TestNgDemo">
+
+                <methods>
+                    <include name="testGoogle3"></include>
+                </methods>
+
+            </class>
+
+        </classes>
+
+    </test>
+
 
 </suite>
