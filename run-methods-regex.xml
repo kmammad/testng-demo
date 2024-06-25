@@ -1,0 +1,24 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="Regression Test Suite">
+
+    <test name="UI Tests">
+
+       <classes>
+           <class name="demo.TestingRegex">
+               <methods>
+                   <include name="test.*"/>
+<!--                   anything that STARTs with 'test'-->
+
+                   <include name=".*API"/>
+<!--                   anything that ENDs with API-->
+
+                   <exclude name=".*002.*"/>
+<!--                   anything that CONTAINs 002-->
+               </methods>
+           </class>
+       </classes>
+
+    </test>
+
+</suite>
