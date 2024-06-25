@@ -9,17 +9,7 @@ import org.testng.annotations.*;
 
 import java.time.Duration;
 
-public class ConfigurationAnnotations {
-
-    @BeforeGroups (groups = "smoke")
-    public void setUpGroup(){
-        System.out.println("Smoke tests BEFORE SETUP");
-    }
-
-    @AfterSuite (groups = "smoke")
-    public void tearDownGroup(){
-        System.out.println("Smoke tests AFTER TEARDOWN");
-    }
+public class GroupsDemo {
 
     WebDriver driver;
 
@@ -79,7 +69,7 @@ public class ConfigurationAnnotations {
         driver.quit();
     }
 
-    @Test
+    @Test (groups = "smoke")
     public void testGoogle(){
         System.out.println("test 1");
         driver.get("https://www.google.com/");
@@ -88,7 +78,7 @@ public class ConfigurationAnnotations {
         Assert.assertTrue(driver.getTitle().contains(searchTerm));
     }
 
-    @Test (groups = { "smoke", "flaky", "googleSearch"})
+    @Test
     public void testGoogle2(){
         System.out.println("test 2");
         driver.get("https://www.google.com/");

@@ -13,23 +13,23 @@ public class TimeoutSuiteLevel {
 
     WebDriver driver;
 
-    @BeforeClass
+    @BeforeClass (alwaysRun = true)
     public void setUp(){
         driver = new ChromeDriver();
         driver.manage().window().maximize();
     }
 
-    @AfterClass
+    @AfterClass (alwaysRun = true)
     public void tearDown(){
         driver.quit();
     }
 
-    @Test
+    @Test (groups = "flaky")
     public void testValidLogin() throws InterruptedException {
         driver.get("http://secure.smartbearsoftware.com/samples/TestComplete12/WebOrders/Login.aspx");
         driver.findElement(By.id("ctl00_MainContent_username")).sendKeys("Tester", Keys.TAB,
                 "test", Keys.ENTER);
-        Thread.sleep(20000);
+        Thread.sleep(10000);
         Assert.assertEquals(driver.getTitle(), "Web Orders");
     }
 

@@ -18,7 +18,7 @@ public class TestNgDemo {
 
     WebDriver driver;
 
-    @BeforeMethod
+    @BeforeMethod (alwaysRun = true)
     public void setUp(){
          driver = new ChromeDriver();
 
@@ -26,7 +26,7 @@ public class TestNgDemo {
          driver.manage().window().maximize();
     }
 
-    @AfterMethod
+    @AfterMethod (alwaysRun = true)
     public void tearDown(){
         driver.quit();
     }
@@ -40,7 +40,7 @@ public class TestNgDemo {
         Assert.assertTrue(driver.getTitle().contains(searchTerm));
     }
 
-    @Test (priority = 1)
+    @Test (priority = 1, groups = "googleSearch")
     public void testGoogle2(){
 
         driver.get("https://www.google.com/");
@@ -49,11 +49,12 @@ public class TestNgDemo {
         Assert.assertTrue(driver.getTitle().contains(searchTerm));
     }
 
-    @Test (priority = 2)
-    public void testGoogle3(){
+    @Test (priority = 2, groups = {"smoke", "flaky"} )
+    public void testGoogle3() throws InterruptedException {
 
         driver.get("https://www.google.com/");
         String searchTerm = "screen protector";
+        Thread.sleep(3000);
         driver.findElement(By.name("q")).sendKeys(searchTerm, Keys.ENTER);
         Assert.assertTrue(driver.getTitle().contains(searchTerm));
     }

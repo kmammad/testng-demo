@@ -19,7 +19,7 @@ public class TestingRegex {
         System.out.println("C");
     }
 
-    @Test
+    @Test(groups = "smoke")
     public void tc_001_API(){
         System.out.println("D");
     }

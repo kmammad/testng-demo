@@ -13,18 +13,18 @@ public class TimeoutMethodLevel {
 
     WebDriver driver;
 
-    @BeforeClass
+    @BeforeClass (alwaysRun = true)
     public void setUp(){
         driver = new ChromeDriver();
         driver.manage().window().maximize();
     }
 
-    @AfterClass
+    @AfterClass (alwaysRun = true)
     public void tearDown(){
         driver.quit();
     }
 
-    @Test (timeOut = 5000) //ThreadTimeoutException: Method demo.TimeOutDemo.testValidLogin() didn't finish within the time-out 5000
+    @Test (timeOut = 5000, groups = "googleSearch") //ThreadTimeoutException: Method demo.TimeOutDemo.testValidLogin() didn't finish within the time-out 5000
     public void testValidLogin() throws InterruptedException {
         driver.get("http://secure.smartbearsoftware.com/samples/TestComplete12/WebOrders/Login.aspx");
         driver.findElement(By.id("ctl00_MainContent_username")).sendKeys("Tester", Keys.TAB,

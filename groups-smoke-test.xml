@@ -1,0 +1,28 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="Example Test Suite" >
+
+    <test name="Smoke Tests">
+
+<!--        When you run group tests, the @Before and @After annotations do not run by default
+          to make them run, use alwaysRun attribute by setting it to true -->
+
+<!--        don't forget to add before groups and after groups annotation with group name
+            to one of the classes in this package-->
+
+        <groups>
+            <run>
+                <include name="smoke"/>
+<!--                <include name="flaky"/>-->
+<!--                <exclude name="googleSearch"/>-->
+            </run>
+        </groups>
+
+       <packages>
+           <package name="demo"/>
+       </packages>
+
+
+    </test>
+
+</suite>
